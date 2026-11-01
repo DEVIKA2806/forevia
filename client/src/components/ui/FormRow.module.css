@@ -1,0 +1,14 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--space-4);
+}
+
+/* Below tablet width, side-by-side fields become too narrow to use
+   comfortably, so every FormRow collapses to a single column. Done here
+   rather than per-page so all forms behave consistently. */
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

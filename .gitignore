@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment variables (never commit real secrets)
+.env
+.env.local
+
+# Prisma generated client (regenerated via `npx prisma generate`)
+# Kept out of git since it's large and machine-specific; not required
+# once we add postinstall generation, but excluded from the start for hygiene.
+generated/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

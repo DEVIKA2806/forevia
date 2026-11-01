@@ -1,0 +1,84 @@
+/*
+  Forevia design tokens.
+
+  Every color, spacing value, radius, shadow, and font size used anywhere in
+  the app should come from one of these variables rather than being
+  hardcoded in a component. That's what makes it possible to change the
+  look of the whole app (e.g. adjust the primary color) from one file.
+*/
+
+:root {
+  /* ---- Color: neutrals (base of the UI — page background, text, borders) ---- */
+  --color-bg: #f7f7fb;              /* page background — light lavender-gray, not pure white */
+  --color-surface: #ffffff;         /* cards, sidebar, header */
+  --color-border: #e5e7eb;          /* subtle card/input borders */
+  --color-border-strong: #d1d5db;   /* borders that need a bit more contrast (e.g. input focus-adjacent) */
+
+  --color-text-primary: #111827;    /* near-black, not pure black — softer to read */
+  --color-text-secondary: #6b7280;  /* labels, captions, supporting text */
+  --color-text-muted: #9ca3af;      /* placeholders, disabled text */
+
+  /* ---- Color: brand ---- */
+  --color-primary: #5b4fe8;         /* restrained indigo/violet — primary actions, active nav, links */
+  --color-primary-hover: #4a3fd4;
+  --color-primary-light: #eeecfd;   /* light tint for selected/active backgrounds */
+
+  /* ---- Color: status (muted, not saturated — used sparingly) ---- */
+  --color-success: #1f9254;
+  --color-success-light: #e7f6ee;
+  --color-warning: #b76e00;
+  --color-warning-light: #fdf1e0;
+  --color-danger: #c0392b;
+  --color-danger-light: #fbeae8;
+
+  /* ---- Spacing scale (used for padding, gaps, margins) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ---- Radius ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 999px;
+
+  /* ---- Shadow (kept subtle — cards should feel calm, not floating) ---- */
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.05);
+  --shadow-md: 0 2px 8px rgba(17, 24, 39, 0.06);
+
+  /* ---- Typography ---- */
+  --font-family-base:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 28px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+
+  /* ---- Transitions (kept short and simple — no bouncy/flashy motion) ---- */
+  --transition-fast: 120ms ease;
+  --transition-base: 180ms ease;
+
+  /* ---- Layout ---- */
+  --sidebar-width: 240px;
+  --header-height: 64px;
+  --page-max-width: 1200px;
+}

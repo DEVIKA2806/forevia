@@ -1,0 +1,15 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* prevents flex children (e.g. wide charts) from forcing overflow */
+}
+
+.content {
+  flex: 1;
+}

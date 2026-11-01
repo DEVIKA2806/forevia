@@ -1,0 +1,110 @@
+// Prisma schema for Forevia
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Phase 1 only defines User, just enough to prove the DB connection works
+// and to run our first migration. The full domain (HealthProfile,
+// FinancialProfile, Simulation, Goal, etc.) is added in later phases so we
+// build the schema alongside the features that actually use it, instead of
+// guessing the whole data model up front.
+model User {
+  id           String   @id @default(uuid())
+  fullName     String
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  healthProfile HealthProfile?
+  wealthProfile WealthProfile?
+  goals         Goal[]
+}
+
+// Self-reported lifestyle information. Separate from User (rather than
+// extra columns on it) because it's optional, filled in later, and keeps
+// sensitive health data isolated from the authentication record.
+//
+// A one-to-one relation: `userId` is unique, so each user has at most one
+// health profile. onDelete: Cascade means deleting an account also
+// removes this data rather than orphaning it.
+model HealthProfile {
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  age            Int
+  gender         String // includes a "prefer_not_to_say" option
+  heightCm       Float
+  weightKg       Float
+  activityLevel  String
+  sleepHours     Float
+  smokingStatus  String
+  alcoholUse     String
+  conditions     String? // optional, free text
+  healthGoals    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Self-reported financial information. Same reasoning as HealthProfile:
+// optional, entered later, and kept separate from the auth record.
+//
+// Amounts use Float for simplicity at this stage. For a system doing real
+// money movement, Decimal would be the correct choice (no binary
+// floating-point rounding); these are user-entered planning estimates
+// feeding an illustrative simulator, so Float is adequate here.
+model WealthProfile {
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  monthlyIncome      Float
+  monthlyExpenses    Float
+  currentSavings     Float
+  currentInvestments Float
+  existingDebt       Float
+  monthlyInvestment  Float
+  financialGoal      String
+  targetAmount       Float? // optional
+  targetYears        Int? // optional
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// A savings goal the user tracks on the Goals page (Phase 12).
+//
+// One-to-many: a user can have several goals, so `userId` is NOT unique
+// (unlike the two profiles above). Every query filters by userId so a user
+// only ever sees their own goals; onDelete: Cascade removes them with the
+// account. Progress (percentage, remaining amount) is derived on the
+// server from targetAmount and currentAmount and is not stored, so it can
+// never get out of step with the amounts.
+//
+// Amounts are Float for the same reason as WealthProfile (planning
+// estimates, not money movement). targetDate is a calendar date with no
+// time or timezone (@db.Date), so a date the user picks never shifts a
+// day depending on where the server runs.
+model Goal {
+  id     String @id @default(uuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title         String
+  targetAmount  Float
+  currentAmount Float
+  targetDate    DateTime? @db.Date // optional
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}

@@ -1,0 +1,385 @@
+.page {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+/* ---- Nav ---- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-4) var(--space-8);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navBrand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brandName {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.brandSubtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.navLink {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.navLink:hover {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.signInLink {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.signInLink:hover {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+/* ---- Hero ---- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: var(--space-10);
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8);
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.heroHeading {
+  font-size: 40px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+.heroHeadingAccent {
+  color: var(--color-primary);
+}
+
+.heroSubtext {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  max-width: 480px;
+}
+
+.heroActions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+}
+
+.flowCard {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.flowStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.flowIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.flowLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.flowConnector {
+  width: 1px;
+  height: 24px;
+  background-color: var(--color-border);
+}
+
+/* ---- Generic section ---- */
+.section {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8);
+}
+
+.sectionMuted {
+  composes: section;
+  max-width: none;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionMuted > * {
+  max-width: var(--page-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sectionHeading {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+/* ---- How it works ---- */
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+}
+
+.stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.stepTitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.stepDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  max-width: 260px;
+}
+
+/* ---- Features ---- */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.featureTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.featureDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ---- About ---- */
+.aboutContent {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.aboutText {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+}
+
+.disclaimer {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---- Final CTA ---- */
+.finalCta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8) var(--space-12);
+  text-align: center;
+}
+
+.finalCtaHeading {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* =======================================================
+   Basic responsive behavior (Phase 3 scope only — full
+   responsive system for the rest of the app comes later)
+   ======================================================= */
+
+/* Tablet: reduce horizontal spacing, keep layout structure */
+@media (max-width: 1024px) {
+  .nav,
+  .hero,
+  .section,
+  .finalCta {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: stack hero, simplify nav, single-column sections */
+@media (max-width: 768px) {
+  .nav {
+    padding: var(--space-3) var(--space-4);
+    gap: var(--space-3);
+  }
+
+  /* The How It Works / Features / About text links are dropped on mobile
+     rather than building a full hamburger menu here — that pattern is
+     scoped to the dedicated responsive-design phase. The content is still
+     reachable by scrolling the page normally. */
+  .navLinks {
+    display: none;
+  }
+
+  .navActions {
+    gap: var(--space-3);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: var(--space-8) var(--space-4);
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .heroText {
+    align-items: center;
+  }
+
+  .heroHeading {
+    font-size: var(--font-size-2xl);
+  }
+
+  .heroSubtext {
+    max-width: none;
+  }
+
+  .heroActions {
+    justify-content: center;
+  }
+
+  .section,
+  .finalCta {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .stepsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heroActions > * {
+    width: 100%;
+  }
+}
